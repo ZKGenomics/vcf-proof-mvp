@@ -22,7 +22,11 @@ fn main() -> Result<(), VCFError> {
 
     // read one record
     reader.next_record(&mut vcf_record)?;
-    println!("{:?}", vcf_record);
+    println!("Chromosome: {:?}", vcf_record.chromosome);
+    println!("Position: {:?}", vcf_record.position);
+    println!("Alternative: {:?}", vcf_record.alternative);
+    println!("Format: {:?}", vcf_record.format);
+    //println!("Genotype: {:?}", vcf_record.genotype);
 
     Ok(())
 }
