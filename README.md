@@ -1,4 +1,4 @@
-# Genome Encryption with Zero-Knowledge Proofs
+# Genome Zero-Knowledge Proof MVP
 
 This project demonstrates how to create zero-knowledge proofs for genomic data stored in VCF (Variant Call Format) files.
 
