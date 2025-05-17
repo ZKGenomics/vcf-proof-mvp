@@ -28,6 +28,12 @@ type VariantCircuit struct {
 			LineNumber   int64
 		}
 	*/
+	Chromosome frontend.Variable `gnark:"chromosome"`
+}
+
+func (circuit *VariantCircuit) Define(api frontend.API) error {
+	api.AssertIsEqual(22, circuit.Chromosome)
+	return nil
 }
 
 func main() {
