@@ -14,7 +14,7 @@ import (
 )
 
 // ChromosomeCircuit defines a minimal circuit that proves
-// a specific chromosome exists in the dataset without revealing
+// a specific chromosome exists in the genome without revealing
 // other genomic information
 type ChromosomeCircuit struct {
 	// Public input - the chromosome number we want to prove exists
