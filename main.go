@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/brentp/vcfgo"
+	//"github.com/consensys/gnark"
 	"os"
 )
 
@@ -20,7 +21,6 @@ func main() {
 		fmt.Printf("%s\t%d\t%s\t%v\n", variant.Chromosome, variant.Pos, variant.Ref(), variant.Alt())
 	}
 	fmt.Fprintln(os.Stderr, rdr.Error())
-
 }
 
 // given example of vcf
