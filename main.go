@@ -41,22 +41,8 @@ func (circuit *ChromosomeCircuit) Define(api frontend.API) error {
 	diff4 := api.Sub(circuit.Chromosome4, circuit.TargetChromosome)
 	diff5 := api.Sub(circuit.Chromosome5, circuit.TargetChromosome)
 
-	// A difference of 0 means they are equal
-	// We can detect this using multiplication: diff * 0 = 0 for any diff
-	// But diff * 1/diff = 1 for non-zero diff
-
-	// We'll compute isZero flags (1 if diff is 0, 0 otherwise)
-	// To create an 'isEqual' flag, we multiply diff by itself and add 0
-	// If diff=0, result is 0, otherwise it's positive
-	// Then we do a "trick" with constraints to check for zero
-
-	// Creating a constraint that is satisfied only when diff=0
-	// For each chromosome
-	zero := 0
-
 	// We can also compute the sum of squares of differences
 	// This would be zero only if all differences are zero
-	// But we don't need this for our approach
 	_ = api.Add(
 		api.Mul(diff1, diff1),
 		api.Mul(diff2, diff2),
@@ -65,18 +51,13 @@ func (circuit *ChromosomeCircuit) Define(api frontend.API) error {
 		api.Mul(diff5, diff5),
 	)
 
-	// We need to check if any of the chromosomes match the target
-	// This means at least one of the diffs is zero
 	// If all diffs are non-zero, their product will be non-zero
 	product := api.Mul(diff1, diff2, diff3, diff4, diff5)
-
-	// Now assert that the product is zero - meaning at least one diff is zero
-	api.AssertIsEqual(product, zero)
+	api.AssertIsEqual(product, 0)
 
 	return nil
 }
 
-// extractChromosomeNumbers reads a VCF file and extracts chromosome numbers
 func extractChromosomeNumbers(vcfPath string, maxCount int) ([]int, error) {
 	f, err := os.Open(vcfPath)
 	if err != nil {
@@ -98,11 +79,9 @@ func extractChromosomeNumbers(vcfPath string, maxCount int) ([]int, error) {
 			break
 		}
 
-		// Extract chromosome number (handling formats like "chr22" or just "22")
 		chrStr := variant.Chromosome
 		chrStr = strings.TrimPrefix(chrStr, "chr")
 
-		// Try to convert to integer (skip if not numeric)
 		chrNum, err := strconv.Atoi(chrStr)
 		if err == nil {
 			chromosomes = append(chromosomes, chrNum)
@@ -120,13 +99,6 @@ func extractChromosomeNumbers(vcfPath string, maxCount int) ([]int, error) {
 func main() {
 	vcfPath := "data/genome_example.vcf"
 
-	// Check if the VCF file exists
-	if _, err := os.Stat(vcfPath); os.IsNotExist(err) {
-		fmt.Println("No vcf file found")
-		os.Exit(1)
-	}
-
-	// 1. Extract chromosome numbers from the VCF file
 	fmt.Println("Reading VCF file...")
 	chromosomes, err := extractChromosomeNumbers(vcfPath, 10)
 	if err != nil {
@@ -144,10 +116,8 @@ func main() {
 	// For demonstration, let's prove chromosome 22 exists in our data
 	targetChromosome := 22
 
-	// 2. Setup our circuit
 	var circuit ChromosomeCircuit
 
-	// 3. Compile the circuit
 	fmt.Println("Compiling circuit...")
 	ccs, err := frontend.Compile(ecc.BN254.ScalarField(), r1cs.NewBuilder, &circuit)
 	if err != nil {
@@ -155,7 +125,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	// 4. Setup the proving and verification keys
 	fmt.Println("Setting up proving system...")
 	pk, vk, err := groth16.Setup(ccs)
 	if err != nil {
@@ -163,7 +132,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	// 5. Create the witness (the actual values for our circuit)
 	fmt.Println("Creating witness...")
 
 	// Pad chromosomes to 5 items (our fixed circuit size)
@@ -176,22 +144,6 @@ func main() {
 		}
 	}
 
-	// Ensure the target chromosome is in our list (for demo purposes)
-	hasTarget := false
-	for _, chr := range paddedChromosomes {
-		if chr == targetChromosome {
-			hasTarget = true
-			break
-		}
-	}
-
-	if !hasTarget {
-		// For demo, add the target chromosome if it's not present
-		fmt.Println("Adding target chromosome to sample data for demonstration")
-		paddedChromosomes[0] = targetChromosome
-	}
-
-	// Create witness assignment
 	witness := &ChromosomeCircuit{
 		TargetChromosome: targetChromosome,
 		Chromosome1:      paddedChromosomes[0],
@@ -201,21 +153,18 @@ func main() {
 		Chromosome5:      paddedChromosomes[4],
 	}
 
-	// Convert our witness to the format expected by gnark
 	w, err := frontend.NewWitness(witness, ecc.BN254.ScalarField())
 	if err != nil {
 		fmt.Printf("Witness creation error: %v\n", err)
 		os.Exit(1)
 	}
 
-	// Extract the public part of the witness for verification
 	publicWitness, err := w.Public()
 	if err != nil {
 		fmt.Printf("Public witness error: %v\n", err)
 		os.Exit(1)
 	}
 
-	// 6. Generate the proof
 	fmt.Println("Generating proof...")
 	proof, err := groth16.Prove(ccs, pk, w)
 	if err != nil {
@@ -223,7 +172,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	// 7. Verify the proof
 	fmt.Println("Verifying proof...")
 	err = groth16.Verify(proof, vk, publicWitness)
 	if err != nil {
