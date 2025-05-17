@@ -77,7 +77,3 @@ This proof-of-concept could be extended in several ways:
 - [gnark Library](https://github.com/ConsenSys/gnark)
 - [VCF File Format Specification](https://samtools.github.io/hts-specs/VCFv4.2.pdf)
 - [Zero-Knowledge Proofs: An Illustrated Primer](https://blog.cryptographyengineering.com/2014/11/27/zero-knowledge-proofs-illustrated-primer/)
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
