@@ -1,4 +1,4 @@
-module github.com/zkgenomics/genome-encryption
+module github.com/zkgenomics/vcf-proof-mvp
 
 go 1.24.2
 
