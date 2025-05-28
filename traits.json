@@ -1,0 +1,134 @@
+[
+  {
+    "trait": "BRCA1 Pathogenic Variant",
+    "gene": "BRCA1",
+    "chromosome": 17,
+    "position": 41276045,
+    "region": {
+      "start": 41276000,
+      "end": 41277000
+    },
+    "ref": "C",
+    "alt": "G"
+  },
+  {
+    "trait": "APOE \u03b54 Allele",
+    "gene": "APOE",
+    "chromosome": 19,
+    "position": 45411941,
+    "region": {
+      "start": 45411900,
+      "end": 45412000
+    },
+    "ref": "T",
+    "alt": "C"
+  },
+  {
+    "trait": "APOE \u03b52 Allele",
+    "gene": "APOE",
+    "chromosome": 19,
+    "position": 45412079,
+    "region": {
+      "start": 45412000,
+      "end": 45412200
+    },
+    "ref": "C",
+    "alt": "T"
+  },
+  {
+    "trait": "CYP2C19*2 (Drug Metabolism)",
+    "gene": "CYP2C19",
+    "chromosome": 10,
+    "position": 96541616,
+    "region": {
+      "start": 96541500,
+      "end": 96541700
+    },
+    "ref": "G",
+    "alt": "A"
+  },
+  {
+    "trait": "CFTR \u0394F508 (Carrier Status)",
+    "gene": "CFTR",
+    "chromosome": 7,
+    "position": 117199644,
+    "region": {
+      "start": 117199600,
+      "end": 117199700
+    },
+    "ref": "C",
+    "alt": "T"
+  },
+  {
+    "trait": "TCF7L2 (T2D PRS SNP 1)",
+    "gene": "TCF7L2",
+    "chromosome": 10,
+    "position": 114758349,
+    "region": {
+      "start": 114758000,
+      "end": 114759000
+    },
+    "ref": "C",
+    "alt": "T"
+  },
+  {
+    "trait": "PPARG (T2D PRS SNP 2)",
+    "gene": "PPARG",
+    "chromosome": 3,
+    "position": 12393125,
+    "region": {
+      "start": 12393000,
+      "end": 12393200
+    },
+    "ref": "C",
+    "alt": "G"
+  },
+  {
+    "trait": "CDKAL1 (T2D PRS SNP 3)",
+    "gene": "CDKAL1",
+    "chromosome": 6,
+    "position": 20679709,
+    "region": {
+      "start": 20679600,
+      "end": 20679800
+    },
+    "ref": "A",
+    "alt": "G"
+  },
+  {
+    "trait": "SLC24A5 (Ancestry Marker)",
+    "gene": "SLC24A5",
+    "chromosome": 15,
+    "position": 48426484,
+    "region": {
+      "start": 48426400,
+      "end": 48426600
+    },
+    "ref": "G",
+    "alt": "A"
+  },
+  {
+    "trait": "DARC (Ancestry Marker)",
+    "gene": "DARC",
+    "chromosome": 1,
+    "position": 159174683,
+    "region": {
+      "start": 159174600,
+      "end": 159174800
+    },
+    "ref": "T",
+    "alt": "C"
+  },
+  {
+    "trait": "IRF4 (Ancestry Marker)",
+    "gene": "IRF4",
+    "chromosome": 6,
+    "position": 396321,
+    "region": {
+      "start": 396000,
+      "end": 397000
+    },
+    "ref": "C",
+    "alt": "T"
+  }
+]
