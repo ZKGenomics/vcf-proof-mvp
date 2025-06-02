@@ -17,7 +17,7 @@ func main() {
 	}
 
 	command := os.Args[1]
-	
+
 	switch command {
 	case "generate":
 		handleGenerate(os.Args[2:])
@@ -113,7 +113,7 @@ func handleVerify(args []string) {
 		if *verifyingKeyPath == "" && *proofPath != "" {
 			*verifyingKeyPath = *proofPath + ".vk"
 		}
-		
+
 		if *proofType == "" || *proofPath == "" {
 			fmt.Fprintf(os.Stderr, "Error: -type and -proof are required\n\n")
 			verifyCmd.Usage()
@@ -158,6 +158,8 @@ func createProof(proofType string) (proofs.Proof, error) {
 		return &proofs.EyeColorProof{}, nil
 	case "brca1":
 		return &proofs.BRCA1Proof{}, nil
+	case "herc2":
+		return &proofs.HERC2Proof{}, nil
 	default:
 		return nil, fmt.Errorf("unknown proof type: %s. Supported types: chromosome, eyecolor, brca1", proofType)
 	}
