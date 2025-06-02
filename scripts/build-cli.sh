@@ -9,10 +9,10 @@ cd "$(dirname "$0")"
 
 # Build the CLI binary
 echo "Compiling CLI from cmd/cli..."
-go build -o bin/vcf-proof-cli ./cmd/cli
+go build -o ../bin/vcf-proof-cli ../cmd/cli
 
 # Make the binary executable
-chmod +x bin/vcf-proof-cli
+chmod +x ../bin/vcf-proof-cli
 
 echo "✓ CLI built successfully!"
 echo "Binary location: ./bin/vcf-proof-cli"
