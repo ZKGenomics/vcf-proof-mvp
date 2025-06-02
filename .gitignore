@@ -1,7 +1,4 @@
 data
 output
 
-
-# Added by cargo
-
-/target
+/bin
