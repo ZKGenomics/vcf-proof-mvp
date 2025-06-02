@@ -7,3 +7,4 @@ type Proof interface {
 
 type ChromosomeProof struct{}
 type EyeColorProof struct{}
+type BRCA1Proof struct{}
