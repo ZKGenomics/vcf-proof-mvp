@@ -41,6 +41,9 @@ func (p *BRCA1Proof) Generate(vcfPath string, provingKeyPath string, outputPath 
 
 		pos := variant.Pos
 
+		if pos%1000 == 0 {
+			fmt.Printf("Searching position: %d\n", pos)
+		}
 		if pos == 41276045 {
 			fmt.Println("Found position.")
 			fmt.Printf("Variant: Chromosome: %s, Reference: %s, Alternate: %s", variant.Chromosome, variant.Reference, variant.Alternate)
