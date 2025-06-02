@@ -31,6 +31,7 @@ func (p *BRCA1Proof) Generate(vcfPath string, provingKeyPath string, outputPath 
 		return err
 	}
 
+	fmt.Println("searching for BRCA1 trait...")
 	for {
 		variant := rdr.Read()
 		if variant == nil {
