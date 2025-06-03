@@ -130,5 +130,65 @@
     },
     "ref": "C",
     "alt": "T"
+  },
+  {
+    "trait": "DFNB1 (Hearing Loss)",
+    "gene": "GJB2",
+    "chromosome": 22,
+    "position": 20765447,
+    "region": {
+      "start": 20765000,
+      "end": 20766000
+    },
+    "ref": "G",
+    "alt": "A"
+  },
+  {
+    "trait": "Hyperhomocysteinemia",
+    "gene": "CBS",
+    "chromosome": 22,
+    "position": 30927638,
+    "region": {
+      "start": 30927000,
+      "end": 30928000
+    },
+    "ref": "G",
+    "alt": "A"
+  },
+  {
+    "trait": "Schizophrenia Risk",
+    "gene": "COMT",
+    "chromosome": 22,
+    "position": 19951271,
+    "region": {
+      "start": 19951000,
+      "end": 19952000
+    },
+    "ref": "G",
+    "alt": "A"
+  },
+  {
+    "trait": "Ewing Sarcoma Susceptibility",
+    "gene": "EWSR1",
+    "chromosome": 22,
+    "position": 29683145,
+    "region": {
+      "start": 29683000,
+      "end": 29684000
+    },
+    "ref": "T",
+    "alt": "C"
+  },
+  {
+    "trait": "Breast Cancer Susceptibility",
+    "gene": "CHEK2",
+    "chromosome": 22,
+    "position": 29091840,
+    "region": {
+      "start": 29091500,
+      "end": 29092000
+    },
+    "ref": "C",
+    "alt": "T"
   }
 ]
